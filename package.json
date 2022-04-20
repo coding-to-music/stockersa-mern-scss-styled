@@ -11,17 +11,18 @@
     "client/node_modules"
   ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "npm install && cd client && npm install && npm run build",
     "start": "node server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1",
     "deploy": "git add . && git commit -m Heroku && git push && git push heroku && heroku logs --tail --remote heroku"
   },
   "author": "Ilias Allek",
   "license": "ISC",
   "dependencies": {
-    "cookie-parser": "^1.4.5",
+    "cookie-parser": "^1.4.6",
     "cors": "^2.8.5",
-    "express": "^4.17.1",
-    "helmet": "^4.6.0",
+    "express": "^4.17.3",
+    "helmet": "^5.0.2",
     "morgan": "^1.10.0",
     "request": "^2.88.2",
     "xss-clean": "^0.1.1"

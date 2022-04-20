@@ -24,6 +24,20 @@ process.env.REACT_APP_BACKEND_URL
 process.env.REACT_APP_TIINGO_API_KEY
 ```
 
+## Failing to build
+
+```java
+> stockersa@0.1.0 build
+> react-scripts build
+
+Creating an optimized production build...
+Failed to compile.
+
+SyntaxError: unknown: Namespace tags are not supported by default. React's JSX doesn't support namespace tags. You can set `throwIfNamespace: false` to bypass this warning.
+   6 |   ...props
+   7 | }, svgRef) {
+```
+
 ## Detailed uses of environment variables:
 
 ```java
@@ -249,4 +263,110 @@ git push heroku
 # or
 
 npm run deploy
+```
+
+## update npm packages
+
+```java
+npm install -g npm-check-updates
+```
+
+Output:
+
+```java
+
+```
+
+```java
+ncu -u
+```
+
+Output:
+
+```java
+Upgrading /mnt/volume_nyc1_01/stockersa-mern-scss-styled/package.json
+[====================] 7/7 100%
+
+ cookie-parser   ^1.4.5  →   ^1.4.6
+ express        ^4.17.1  →  ^4.17.3
+ helmet          ^4.6.0  →   ^5.0.2
+
+removed 3 packages, changed 263 packages, and audited 264 packages in 10s
+
+29 packages are looking for funding
+  run `npm fund` for details
+
+found 0 vulnerabilities
+```
+
+```java
+npm install
+```
+
+Output:
+
+```java
+changed 1 package, and audited 106 packages in 954ms
+
+3 packages are looking for funding
+  run `npm fund` for details
+```
+
+## Client directory
+
+```java
+cd client
+
+ncu -u
+```
+
+```java
+Upgrading /mnt/volume_nyc1_01/stockersa-mern-scss-styled/client/package.json
+[====================] 63/63 100%
+
+ @pmndrs/branding                     0.0.7  →          0.0.8
+ @reach/combobox                    ^0.15.0  →        ^0.16.5
+ @react-google-maps/api              ^2.1.1  →         ^2.8.1
+ @react-three/drei                   ^4.1.8  →         ^9.5.0
+ @react-three/fiber                 ^6.0.16  →        ^8.0.12
+ @testing-library/jest-dom         ^5.11.10  →        ^5.16.4
+ @testing-library/react             ^11.2.6  →        ^13.1.1
+ @testing-library/user-event        ^12.8.3  →        ^14.1.1
+ @visx/group                         ^1.7.0  →         ^2.1.0
+ @visx/shape                        ^1.12.0  →         ^2.4.0
+ @visx/text                         ^1.10.0  →         ^2.3.0
+ axios                              ^0.21.1  →        ^0.26.1
+ d3                                  ^4.0.0  →         ^7.4.4
+ date-fns                           ^2.22.1  →        ^2.28.0
+ dotenv                              ^8.2.0  →        ^16.0.0
+ fusioncharts                       ^3.17.0  →        ^3.18.0
+ http-proxy-middleware               ^2.0.1  →         ^2.0.5
+ moment                             ^2.29.1  →        ^2.29.3
+ prop-types                         ^15.7.2  →        ^15.8.1
+ react                              ^17.0.2  →        ^18.0.0
+ react-cool-onclickoutside           ^1.6.2  →         ^1.7.0
+ react-dom                          ^17.0.2  →        ^18.0.0
+ react-icons                         ^4.2.0  →         ^4.3.1
+ react-intersection-observer        ^8.32.0  →        ^8.34.0
+ react-query                        ^3.16.1  →        ^3.35.0
+ react-responsive             ^9.0.0-beta.3  →  ^9.0.0-beta.6
+ react-router-dom                    ^5.2.0  →         ^6.3.0
+ react-scripts                        4.0.3  →          5.0.1
+ react-scroll                        ^1.8.3  →         ^1.8.7
+ recharts                            ^2.0.9  →         ^2.1.9
+ sass                               ^1.41.0  →        ^1.50.1
+ sass-loader                        ^12.1.0  →        ^12.6.0
+ stripe                            ^8.150.0  →       ^8.218.0
+ styled-components                   ^5.2.3  →         ^5.3.5
+ three                             ^0.124.0  →       ^0.139.2
+ three-globe                        ^2.18.6  →        ^2.24.4
+ use-places-autocomplete             ^1.9.1  →         ^2.0.0
+ web-vitals                          ^1.1.1  →         ^2.1.4
+ eslint-config-prettier              ^8.1.0  →         ^8.5.0
+ eslint-plugin-html                  ^6.1.2  →         ^6.2.0
+ eslint-plugin-prettier              ^3.3.1  →         ^4.0.0
+ mongoose                           ^5.12.7  →         ^6.3.0
+ prettier                            ^2.2.1  →         ^2.6.2
+
+Run npm install to install new versions.
 ```
