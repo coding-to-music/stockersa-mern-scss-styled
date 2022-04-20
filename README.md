@@ -14,9 +14,87 @@ by Ilias Allek https://github.com/Allek97
 
 https://github.com/Allek97/stockersa
 
+## Summary uses of environment variables:
+
 ```java
-const secret = process.env.JWT_SECRET;
+process.env.NODE_ENV === "development"
+process.env.REACT_APP_GOOGLE_MAPS_API_KEY
+process.env.REACT_APP_ALPHA_VANTAGE_API_KEY
+process.env.REACT_APP_BACKEND_URL
+process.env.REACT_APP_TIINGO_API_KEY
+```
+
+## Detailed uses of environment variables:
+
+```java
+# mongoose is not used in this project
 mongoose_1.default.connect(`${process.env.MONGODB_URI
+
+// Development logging
+if (process.env.NODE_ENV === "development") {
+    app.use(morgan("dev"));
+}
+
+export default function StockMap({ assetAddress, assetName }) {
+    const [libraries] = useState(["places"]);
+
+    const { isLoaded, loadError } = useLoadScript({
+        googleMapsApiKey: process.env.REACT_APP_GOOGLE_MAPS_API_KEY,
+        libraries,
+        id: "stockersa",
+    });
+
+const axiosInstance = axios.create({
+    baseURL: "https://www.alphavantage.co/query",
+});
+
+export const getDailyStockForSymbol = (symbol) => {
+    return axiosInstance.get("", {
+        params: {
+            function: "TIME_SERIES_DAIlY",
+            symbol,
+            apikey: process.env.REACT_APP_ALPHA_VANTAGE_API_KEY,
+        },
+    });
+};
+
+
+const axiosInstance = axios.create({
+    // baseURL: "https://financialmodelingprep.com/api/v3/",
+    baseURL: process.env.REACT_APP_BACKEND_URL,
+});
+const FMPURL = "https://financialmodelingprep.com/api/v3";
+
+export const getDailyAssetPriceFMP = (symbol, startDate, endDate) => {
+    return axiosInstance.get(`api/fmp/`, {
+        params: {
+            url: encodeURI(
+                `${FMPURL}/historical-price-full/${symbol}?from=${startDate}&to=${endDate}&apikey=${process.env.REACT_APP_FMP_API_KEY}`
+            ),
+        },
+    });
+};
+
+const axiosInstance = axios.create({
+    baseURL: process.env.REACT_APP_BACKEND_URL,
+});
+
+export const getDailyStockForSymbolTiingo = (
+    symbol,
+    startDate,
+    endDate,
+    frequence = "daily"
+) => {
+    return axiosInstance.get(`api/tiingo/`, {
+        params: {
+            url: encodeURI(
+                `https://api.tiingo.com/tiingo/daily/${symbol}/prices/?startDate=${startDate}&endDate=${endDate}&resampleFreq=${frequence}&format:"json"&token=${process.env.REACT_APP_TIINGO_API_KEY}`
+            ),
+        },
+    });
+};
+
+
 ```
 
 ## Deploying to Render
