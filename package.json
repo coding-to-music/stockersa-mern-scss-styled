@@ -14,9 +14,9 @@
     "build": "npm install && cd client && npm install && npm run build",
     "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "deploy": "git add . && git commit -m Heroku && git push",
-    "heroku": "git add . && git commit -m Heroku && git push && git push heroku && heroku logs --tail --remote heroku",
-    "vercel": "git add . && git commit -m Heroku && git push && vercel --prod"
+    "deploy": "git add . && git commit -m Build && git push",
+    "heroku": "npm run deploy && git push heroku && heroku logs --tail --remote heroku",
+    "vercel": "npm run deploy && vercel --prod"
   },
   "author": "Ilias Allek",
   "license": "ISC",
